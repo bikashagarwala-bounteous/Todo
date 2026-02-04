@@ -1,0 +1,28 @@
+<div id="viewModal" class="fixed inset-0 bg-black/40 flex items-center justify-center hidden z-50">
+    <div class="bg-blue-100 rounded-3xl p-6 w-[340px] shadow-xl border-4 border-blue-300">
+        <h3 id="modalTitle" class="text-2xl font-extrabold text-center mb-2"></h3>
+
+        <p id="modalDesc" class="bg-white rounded-xl p-3 mb-3 text-sm"></p>
+
+        <p class="text-sm mb-1">
+            ⏳ <span id="modalTime"></span>
+        </p>
+        <p class="text-sm mb-4">
+            📌 Status: <span id="modalStatus"></span>
+        </p>
+        <select id="statusSelect" class="w-full mb-4 px-3 py-2 rounded-xl border-2 border-blue-300">
+            <option value="todo">📋 Todo</option>
+            <option value="inprogress">🚧 In Progress</option>
+            <option value="done">✅ Done</option>
+        </select>
+
+        <div class="flex justify-between">
+            <button id="deleteBtn" class="bg-red-400 px-3 py-2 rounded-xl font-bold hover:bg-red-500">
+                Delete
+            </button>
+            <button id="closeView" class="bg-gray-300 px-3 py-2 rounded-xl font-bold">
+                Close
+            </button>
+        </div>
+    </div>
+</div>

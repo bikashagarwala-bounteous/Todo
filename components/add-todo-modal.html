@@ -1,0 +1,47 @@
+<div
+  id="addModal"
+  class="fixed inset-0 bg-black/40 flex items-center justify-center hidden z-50"
+>
+  <div
+    class="bg-yellow-100 rounded-3xl p-6 w-[320px] shadow-xl border-4 border-yellow-300"
+  >
+    <h3 class="text-2xl font-extrabold text-center mb-4">➕ Add Todo</h3>
+
+    <input
+      id="titleInput"
+      class="w-full mb-3 px-3 py-2 rounded-xl border-2 border-yellow-300 focus:outline-none"
+      placeholder="✨ Title"
+    />
+
+    <textarea
+      id="descInput"
+      class="w-full mb-3 px-3 py-2 rounded-xl border-2 border-yellow-300 focus:outline-none"
+      placeholder="📝 Description"
+    ></textarea>
+
+    <input
+      id="timeInput"
+      type="number"
+      max="6"
+      min="0.1"
+      step="0.1"
+      class="w-full mb-4 px-3 py-2 rounded-xl border-2 border-yellow-300 focus:outline-none"
+      placeholder="⏰ Hours (max 6)"
+    />
+
+    <div class="flex justify-between">
+      <button
+        id="saveTodo"
+        class="bg-green-400 px-4 py-2 rounded-xl font-bold hover:bg-green-500"
+      >
+        Save
+      </button>
+      <button
+        id="cancelAdd"
+        class="bg-pink-400 px-4 py-2 rounded-xl font-bold hover:bg-pink-500"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
