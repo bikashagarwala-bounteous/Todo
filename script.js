@@ -27,13 +27,40 @@ function saveTodos(todos) {
 function createTodoItem(todo) {
   const li = document.createElement("li");
 
+  const now = Date.now();
+  const elapsed = now - todo.createdAt;
+  const percent = (elapsed / todo.durationMs) * 100;
+
+  if (elapsed > todo.durationMs && todo.status !== "done") {
+    todo.status = "incomplete";
+    saveTodos(getTodos());
+  }
+
+  let colorClass = "bg-green-300";
+
+  if (percent > 50 && percent <= 75) {
+    colorClass = "bg-yellow-300";
+  } else if (percent > 75) {
+    colorClass = "bg-red-300";
+  }
+
+  if (todo.status === "done") {
+    colorClass = "bg-green-400";
+  }
+
+  if (todo.status === "incomplete") {
+    colorClass = "bg-gray-400";
+  }
+
   li.className = `
     px-4 py-3 rounded-2xl font-bold shadow-md cursor-pointer
     transition hover:scale-[1.02]
-    ${todo.status === "done" ? "bg-green-300" : "bg-yellow-200"}
+    ${colorClass}
   `;
 
-  li.textContent = todo.title;
+  li.textContent =
+    todo.title + (todo.status === "incomplete" ? " ❌" : "");
+
   li.onclick = () => openViewModal(todo.id);
 
   return li;
@@ -54,6 +81,7 @@ function renderTodos() {
     if (todo.status === "todo") todoList.appendChild(item);
     if (todo.status === "inprogress") progressList.appendChild(item);
     if (todo.status === "done") doneList.appendChild(item);
+    if (todo.status === "home" || todo.status === "incomplete") homeList.appendChild(item);
   });
 }
 
@@ -143,3 +171,4 @@ document.addEventListener("change", e => {
 });
 
 renderTodos();
+setInterval(renderTodos, 60000);
